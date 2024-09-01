@@ -1,0 +1,27 @@
+main.py
+    Instructions:
+        This is the main program. To use it, just open the folder in something like visual studio code and run the program.
+        The program might take a VERY long time to run depending on chapter amount. This is because the cloudflare checks take a lot of time to load and appears often when cycling through the pages fast.
+        The links I use are to the web serial "Shadow Slave" from lightnovelworld.com, but it's applicable to other web serials.
+        To change the web serial you're scraping, just change the "url" variable to the main page, and the "urlChapterBase" variable to, for example, the first chapter with the number at the end that corresponds to the chapter number removed. If there's a bunch of numbers after the chapter number, then remove those too. Even if the real url is "https://www.lightnovelworld.com/novel/shadow-slave-1365/chapter-1-05122224", "https://www.lightnovelworld.com/novel/shadow-slave-1365/chapter-1" should redirect to the correct place.
+    For use with other sites:
+        Other sites might use a different formatting both on each page and in the url, in which case you might need to change a lot of this program. You might have to change how it counts words, as well as how it loops through chapter pages.
+    Potential problems:
+        If the cloudflare's checkbox doesn't get clicked, then it could be a resolution problem.
+        If the cloudflare still won't be bypassed, it might be an update of cloudflare causing the program to not work anymore.
+        If lightnovelworld.com has started to use other types of human checks like "click on the red lights", you might have to use a service like 2captcha to solve it, but at that point you're rewriting most of my code to the point of making your own project, so... Good luck.
+        The formatting might change to the point where the word count becomes inaccurate. In that case, use the dev tool after the end of the while loop to check the page code and rewrite the parts where I look for the end and start of the chapter's content with some other sign of a chapter end/start (look for unique classes, ids and names).
+        If there's some problems where chrome is not opening, check chromdriver.exe.
+    Potential improvements for the future:
+        I might want to count the letters and not the words for more accurate page count, but idk.
+        I might want to research what behaviour triggers cloudflare, so that I can pace the program's page cycling and stuff optimally to waste as little time as possible.
+
+chromedriver.exe
+    Instructions:
+        This chromedriver is specifically for the newest version of chrome from when I made the project, you should probably download a new chromedriver or something to replace it.
+    Potential problems:
+        If there's issues with chrome where it's not opening, try downloading the newest chrome version and check which version of chromedriver is compatible with it, and then download it and replace chromedriver.exe.
+
+listDump.py & listDumpCalculator.py
+    Instructions:
+        This program is just for when you have the list output of previous web scrapings, but don't wanna run the main program all over again when a new chapter arrives. Just put the old web scrape list in "listDump.py", run main.py, but change the range of the for loop so it starts with the first new chapter, take the contents of the list, add it to the end of the old web scrape list in "listDump.py", and run "listDumpCalculator.py".
